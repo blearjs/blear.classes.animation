@@ -1,6 +1,6 @@
 {
   "name": "blear.classes.animation",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "单元素动画组合类",
   "scripts": {
     "live": "browser-sync start --config bs-config.js",
@@ -42,7 +42,7 @@
     "blear.utils.howdo": "1.x",
     "blear.utils.array": "1.x",
     "blear.utils.function": "1.x",
-    "blear.utils.typ": "1.x",
+    "blear.utils.typeis": "1.x",
     "blear.utils.date": "1.x",
     "blear.core.transform": "1.x",
     "blear.core.selector": "1.x"

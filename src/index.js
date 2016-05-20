@@ -13,7 +13,7 @@ var object =    require('blear.utils.object');
 var howdo =     require('blear.utils.howdo');
 var array =     require('blear.utils.array');
 var fun =       require('blear.utils.function');
-var typeis =    require('blear.utils.typ');
+var typeis =    require('blear.utils.typeis');
 var date =      require('blear.utils.date');
 var transform = require('blear.core.transform');
 var selector =  require('blear.core.selector');
@@ -27,7 +27,7 @@ var Animation = Events.extend({
     constructor: function Animation(el, options) {
         var the = this;
 
-        the.Super();
+        Animation.parent(the);
         the[_el] = selector.query(el)[0];
         the[_options] = object.assign(true, {}, defaults, options);
         the[_queue] = [];
@@ -180,10 +180,9 @@ var Animation = Events.extend({
      */
     destroy: function () {
         var the = this;
-        var superDestroy = the.Super.destroy;
 
         fun.until(function () {
-            superDestroy();
+            Animation.parent.destroy(the);
             the[_queue] = [];
             the[_started] = false;
             the[_transform] = {};
