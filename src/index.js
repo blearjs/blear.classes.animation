@@ -8,15 +8,15 @@
 
 'use strict';
 
-var Events =    require('blear.classes.events');
-var object =    require('blear.utils.object');
-var howdo =     require('blear.utils.howdo');
-var array =     require('blear.utils.array');
-var fun =       require('blear.utils.function');
-var typeis =    require('blear.utils.typeis');
-var date =      require('blear.utils.date');
+var Events = require('blear.classes.events');
+var object = require('blear.utils.object');
+var howdo = require('blear.utils.howdo');
+var array = require('blear.utils.array');
+var fun = require('blear.utils.function');
+var typeis = require('blear.utils.typeis');
+var date = require('blear.utils.date');
 var transform = require('blear.core.transform');
-var selector =  require('blear.core.selector');
+var selector = require('blear.core.selector');
 
 
 var defaults = transform.defaults;
@@ -182,7 +182,7 @@ var Animation = Events.extend({
         var the = this;
 
         fun.until(function () {
-            Animation.parent.destroy(the);
+            Animation.invoke('destroy', the);
             the[_queue] = [];
             the[_started] = false;
             the[_transform] = {};
