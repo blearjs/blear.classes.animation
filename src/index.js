@@ -22,7 +22,7 @@ var defaults = transform.defaults;
 
 var Animation = Events.extend({
     className: 'Animation',
-    constructor: function Animation(el, options) {
+    constructor: function(el, options) {
         var the = this;
 
         Animation.parent(the);
