@@ -10,9 +10,8 @@
 
 var Events = require('blear.classes.events');
 var object = require('blear.utils.object');
-var howdo = require('blear.utils.howdo');
+var plan = require('blear.utils.plan');
 var array = require('blear.utils.array');
-var fun = require('blear.utils.function');
 var typeis = require('blear.utils.typeis');
 var date = require('blear.utils.date');
 var transform = require('blear.core.transform');
@@ -20,7 +19,6 @@ var selector = require('blear.core.selector');
 
 
 var defaults = transform.defaults;
-
 
 var Animation = Events.extend({
     className: 'Animation',
@@ -35,7 +33,6 @@ var Animation = Events.extend({
         the[_transform] = {};
         the[_length] = 0;
     },
-
 
     /**
      * 过渡动画
@@ -80,7 +77,6 @@ var Animation = Events.extend({
         return the;
     },
 
-
     /**
      * 帧动画
      * @param name {String} 帧动画名称
@@ -119,7 +115,6 @@ var Animation = Events.extend({
         return the;
     },
 
-
     /**
      * 开始动画
      * @param callback {Function}
@@ -140,7 +135,7 @@ var Animation = Events.extend({
 
         the[_started] = true;
 
-        var queue = howdo;
+        var queue = plan;
 
         array.each(the[_queue], function (index, task) {
             queue = queue.task(task);
@@ -151,7 +146,7 @@ var Animation = Events.extend({
         the.emit('start', {
             timeStamp: startTime
         });
-        queue.follow(function () {
+        queue.serial(function () {
             the[_started] = false;
             var endTime = date.now();
             the.emit('stop', {
@@ -165,31 +160,17 @@ var Animation = Events.extend({
         });
     },
 
-
-    /**
-     * 返回长度
-     * @returns {number}
-     */
-    size: function () {
-        return this[_length];
-    },
-
-
     /**
      * 销毁实例
      */
     destroy: function () {
         var the = this;
 
-        fun.until(function () {
-            Animation.invoke('destroy', the);
-            the[_queue] = [];
-            the[_started] = false;
-            the[_transform] = {};
-            the[_length] = 0;
-        }, function () {
-            return the[_started] === false;
-        });
+        Animation.invoke('destroy', the);
+        the[_queue] = [];
+        the[_started] = false;
+        the[_transform] = {};
+        the[_length] = 0;
     }
 });
 
