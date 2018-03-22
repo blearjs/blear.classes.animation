@@ -1,0 +1,28 @@
+<!doctype html>
+
+<style>
+    #demo {
+        border: 3px solid #000000;
+        padding: 10px;
+        font-size: 30px;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+    #demo2 {
+        transform: translateX(100%);
+        position: relative;
+    }
+</style>
+
+<button id="start">start</button>
+
+<div id="demo">
+    <p id="demo2">一段可以滚动的文字</p>
+</div>
+
+
+
+<script src="/node_modules/coolie.js/coolie.js"
+data-config="/examples/coolie-config.js"
+data-main="frame.js"></script>

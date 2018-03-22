@@ -48,6 +48,7 @@
   },
   "peerDependencies": {},
   "devDependencies": {
+    "blear.core.keyframe": "^1.0.4",
     "jasmine-core": "^2.4.1",
     "karma": "^0.13.22",
     "karma-chrome-launcher": "^1.0.1",
